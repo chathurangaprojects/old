@@ -33,8 +33,35 @@ class PurchaseOrder extends CI_Controller {
  if($this->Privilege_model->grant_privilege($this->session->userdata('level'), $this->session->userdata('department'), 1))
             {
 				
-              echo "user has the priviledges and po form should be displayed";
-		
+              //echo "user has the priviledges and po form should be displayed";
+			  
+			  
+			  $this->load->model('po/Create_po_model');
+                
+                $res1 = $this->Create_po_model->load_departments();
+                $data['depts'] = $res1;
+                
+                $res2 = $this->Create_po_model->load_employees();
+                $data['emps'] = $res2;
+                
+                $res3 = $this->Create_po_model->load_pay_type();
+                $data['pay_types'] = $res3;
+                
+                $res4 = $this->Create_po_model->load_currency();
+                $data['currency'] = $res4;
+                
+                $res5 = $this->Create_po_model->load_units();
+                $data['units'] = $res5;
+			  
+			    $data['title'] = "Create New Purchase Order";
+				
+				//load create purchase order request form
+									$this->template->setTitles('Purchase Order Request Form', 'Create New Purchase Order
+', '', '');
+			
+			$this->template->load('template', 'po/createPurchaseOrderRequest',$data);
+				
+						
 		      }
             else
             {
@@ -48,14 +75,9 @@ class PurchaseOrder extends CI_Controller {
 	
 	
 	}
-	
-
 
 
 }
 
 
 ?>
-
-	
-	
