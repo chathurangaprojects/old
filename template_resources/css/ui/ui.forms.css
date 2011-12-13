@@ -47,7 +47,7 @@ form li span{
 input.text, input.file, textarea.textarea, select.select {
 	color:#333;
 	margin:0;
-	padding:4px;
+	padding:1px;
 }
 input.text, textarea.textarea{
 	border-top:1px solid #7c7c7c;

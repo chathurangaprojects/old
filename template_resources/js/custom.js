@@ -24,8 +24,8 @@ $(document).ready(function() {
 	//Hover states on the static widgets
 
 	$('.ui-state-default').hover(
-		function() { $(this).addClass('ui-state-hover'); }, 
-		function() { $(this).removeClass('ui-state-hover'); }
+		function() {$(this).addClass('ui-state-hover');}, 
+		function() {$(this).removeClass('ui-state-hover');}
 	);
 
 	//Sortable portlets
@@ -227,7 +227,16 @@ $(document).ready(function() {
 		autoOpen: false,
 		width: 600,
 		bgiframe: false,
-		modal: false,
+		modal: true,
+                resizable: false,
+                buttons: {
+			"Close": function() { 
+                                document.getElementById("it").value = "";
+                                document.getElementById("description").value = "";
+				$(this).dialog("close"); 
+			} 
+		}
+                /*
 		buttons: {
 			"Ok": function() { 
 				$(this).dialog("close"); 
@@ -236,7 +245,94 @@ $(document).ready(function() {
 				$(this).dialog("close"); 
 			} 
 		}
+                */
 	});
+        
+        $('#dialog2').dialog({
+		autoOpen: false,
+		width: 600,
+		bgiframe: false,
+		modal: true,
+                resizable: false,
+                buttons: {
+			"Close": function() { 
+                                document.getElementById("item_type2").value = "";
+                                document.getElementById("property").value = "";
+                                document.getElementById("desc2").value = "";
+				$(this).dialog("close"); 
+			} 
+		}
+                /*
+		buttons: {
+			"Ok": function() { 
+				$(this).dialog("close"); 
+			}, 
+			"Cancel": function() { 
+				$(this).dialog("close"); 
+			} 
+		}
+                */
+	});
+        
+        $('#dialog3').dialog({
+		autoOpen: false,
+		width: 600,
+		bgiframe: false,
+		modal: true,
+                resizable: false,
+                buttons: {
+			"Close": function() { 
+                                document.getElementById("item_type3").value = "";
+				$(this).dialog("close"); 
+			} 
+		}
+                /*
+		buttons: {
+			"Ok": function() { 
+				$(this).dialog("close"); 
+			}, 
+			"Cancel": function() { 
+				$(this).dialog("close"); 
+			} 
+		}
+                */
+	});
+    
+    $('#dlg_add_item').dialog({
+        autoOpen: false,
+        width: 900,
+        bgiframe: false,
+        modal: true,
+                resizable: false,
+                buttons: {
+            "Close": function() { 
+                $(this).dialog("close"); 
+            } 
+        }
+                /*
+        buttons: {
+            "Ok": function() { 
+                $(this).dialog("close"); 
+            }, 
+            "Cancel": function() { 
+                $(this).dialog("close"); 
+            } 
+        }
+                */
+    });
+    
+    $('.dlg_edit_item').dialog({
+        autoOpen: false,
+        width: 900,
+        bgiframe: false,
+        modal: true,
+                resizable: false,
+                buttons: {
+            "Close": function() { 
+                $(this).dialog("close"); 
+            } 
+        }
+    });
 
 	// Modal Confirmation		
 
@@ -266,6 +362,28 @@ $(document).ready(function() {
 		$('#dialog').dialog('open');
 		return false;
 	});
+        
+        $('#dialog_link2').click(function(){
+		$('#dialog2').dialog('open');
+		return false;
+	});
+        
+        $('#dialog_link3').click(function(){
+		$('#dialog3').dialog('open');
+		return false;
+	});
+    
+    $('#lnk_add_item').click(function(){
+        $('#dlg_add_item').dialog('open');
+        add_item_to_po();
+        return false;
+    });
+    
+    $('.lnk_edit_item').click(function(){
+        $('.dlg_edit_item').dialog('open');
+        add_item_to_po();
+        return false;
+    });
 	
 	// Modal Confirmation Link
 
@@ -277,7 +395,7 @@ $(document).ready(function() {
 	// Same height
 
 	var sidebarHeight = $("#sidebar").height();
-	$("#page-content-wrapper").css({"minHeight" : sidebarHeight });
+	$("#page-content-wrapper").css({"minHeight" : sidebarHeight});
 
 	// Simple drop down menu
 
