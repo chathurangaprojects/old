@@ -122,7 +122,8 @@
         
         public function load_item_names()
         {
-            if($this->session->userdata('logged_in'))
+           
+		   if($this->session->userdata('logged_in'))
             {
                 if($this->Privilege_model->grant_privilege($this->session->userdata('level'), $this->session->userdata('department'), $this->pid))
                 {
@@ -142,24 +143,24 @@
                 }
                 else
                 {
-                    $data = array('title' => 'Access Denied', 'desc' => 'You are not allowed to access this page.', 'subtitle' => 'Please Contact Administrator...', 'msg' => 'Your user account does not have previleges to access this page. Please contact System Administrator for more details.');
-                    
-                    $this->load->view('ssi/header.php');
-                    $this->load->view('ssi/navigation.php');
-                    $this->load->view('ssi/search.php');
-                    $this->load->view('ssi/sub_navigation.php', $data);
-                    $this->load->view('ssi/top_buttons.php');
-                    $this->load->view('ssi/errors/error_page.php', $data);
-                    $this->load->view('ssi/sidebar.php');
-                    $this->load->view('ssi/footer.php');
+				
+										$this->template->setTitles('Access Denied', 'You are not allowed to access this page.', 'You are not allowed to access this page.', 'Please Contact Administrator...');
+			
+			$this->template->load('template', 'errorPage');
+					
                 }
             }
             else
             {
                 $this->load->view('login_view');
             }
+			
+			
+			
         }
         
+		
+		
         public function upload_master_item()
         {
             $this->load->library('lcs_ims');
@@ -180,6 +181,8 @@
             }
         }
         
+		
+		
         public function add_items()
         {
             if($this->session->userdata('logged_in'))

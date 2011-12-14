@@ -469,11 +469,6 @@ $().ready(function() {
         $("#po_item_name").autocomplete(base_url + "/item_master/load_item_names", {
                 width: 450,
                 matchContains: true,
-                //mustMatch: true,
-                //minChars: 0,
-                //multiple: true,
-                //highlight: false,
-                //multipleSeparator: ",",
                 selectFirst: false
         });
 });
@@ -1072,7 +1067,7 @@ function add_items_to_po()
     {
         $.ajax({
             type: "POST",
-            url: base_url+"/po/purchase_order/add_items_to_po",
+            url: base_url+"/PurchaseOrder/addItemsToPurchaseOrder",
             data: "pono="+pono+"&ic="+ic+"&u="+u+"&up="+up+"&q="+q+"&d="+d+"&da="+da+"&iv="+iv+"&it="+it+"&tv="+tv+"&desc="+desc,
             success: function(msg)
             {

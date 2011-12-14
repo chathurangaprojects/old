@@ -155,9 +155,11 @@
             return $row->Conversion_Rate;
         }
         
+		
+		
         public function add_items_to_po($PO_No, $Item_Code, $Unit, $Unit_Price, $Quantity, $Discount, $Discount_Amount, $Item_Value, $Ind_Tax, $Tax_Value, $Description)
         {
-            //$sql = "INSERT INTO ta_ims_po_header(Supplier_Code, Order_Date, Expected_Date, Quote_No, Attn, Requested_Dept, Requested_By, Created_By, PO_Total, Currency_Code, Currency_Rate, Payment_Type_Code, Payment_Status, PO_Purpose, PO_Remarks, PO_Payment_Remarks, Print_Original, Status_Code) VALUES($Supplier_Code, '$Order_Date', '$Expected_Date', '$Quote_No', '$Attn', $Requested_Dept, $Requested_By, $Created_By, 0, $Currency_Code, $Currency_Rate, $Payment_Type_Code, 0, '$PO_Purpose', '$PO_Remarks', '$PO_Payment_Remarks', 0, 1)";
+
             
             $sql = "INSERT INTO ta_ims_po_details(Order_Code, Master_Item_Code, Unit, Unit_Price, Quantity, Discount, Discount_Value, Item_Value, Ind_Tax, Tax_Value, Description, Breakable, Breakable_Unit, Breakable_Qty) VALUE($PO_No, $Item_Code, $Unit, $Unit_Price, $Quantity, $Discount, $Discount_Amount, $Item_Value, $Ind_Tax, $Tax_Value, '$Description', 1, 1, 1)";
             
@@ -167,19 +169,12 @@
             
             return $sql;
             
-            //return $this->db->affected_rows();
 
-//            if($this->db->affected_rows() == 1)
-//            {
-//                return $this->db->insert_id();
-//            }
-//            else
-//            {
-//                return 0;
-//            }
-            
-//            return "$PO_No + '----------' + $Item_Code + '----------' + $Unit + '----------' + $Unit_Price + '----------' + $Quantity + '----------' + $Discount + '----------' + $Discount_Amount + '----------' + $Item_Value + '----------' + $Ind_Tax + '----------' + $Tax_Value + '----------' + $Description";
         }
+		
+		
+		
+		
         
         public function get_po_items($pono)
         {
