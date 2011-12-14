@@ -45,89 +45,8 @@ class Login extends CI_Controller {
 	
 	}
 	
-	/*
-	
-	public function index()
-	{
+
 		
-		if($this->session->userdata('logged_in'))
-		{
-			//if the user is loged, then the priviledges should be checked. 
- if($this->Privilege_model->grant_privilege($this->session->userdata('level'), $this->session->userdata('department'), 150))
-            {
-				
-			//if the user is having priviledges, he should be redirected to the dashboard	
-			$this->template->setTitles('Page Title', 'Page Sub Title', 'Inner Page Title', 'Inner Page Sub Title');
-			
-			$this->template->load('template', 'dashboard');
-		
-		            }
-            else
-            {
-			
-						$this->template->setTitles('Error Page Title', 'Error Page Sub Title', 'Inner Page Title', 'Inner Page Sub Title');
-			
-			$this->template->load('template', 'dashboard');
-	
-				
-            }
-			
-		}//if logged
-		else
-		{
-			redirect(base_url().'index.php/Login/login');
-		}
-		
-	}
-	
-
-
-
-	public function loging_in(){
-		
-	 if($this->session->userdata('logged_in'))
-        {
-
-			// after successfully login, the user should be redirected the index page.
-			$this->index();
-			
-        }
-        else
-        {
-
-            if($this->Login_model->loging_in())
-            {
-
-                        
-                $row = $this->Login_model->get_emp_data($_POST['login_username']);
-
-                $emp_data = array
-                (
-                    'emp_id'  => $row['Employee_Code'],
-                    'emp_name'  => $row['Employee_Name'],
-                    'level'  => $row['Level_Code'],
-                    'department'  => $row['Department_Code'],
-                    'email'     => $row['Email'],
-                    'logged_in' => TRUE
-                );
-
-                $this->session->set_userdata($emp_data);
-                        echo 1;
-            }
-            else
-            { 
-			
-               echo 2;
-            }
-        }
-	
-	
-	}
-	
-	*/
-	
-	
-	
 	public function index()
 	{
 		
@@ -239,21 +158,6 @@ class Login extends CI_Controller {
            
             $allemployees = $this->Login_model->get_allemployeespaginated($per_page,$offset);   
     
-  /*  
-    $data = array('title' => 'Manage Employees', 'desc' => 'Manage Employees.', 'subtitle' => 'Manage Employees', 'msg' => 'Manage Employees' , 'pagetitle' => 'Manage Employees', 'allemployees' => $allemployees);     
-
-    $this->load->view('ssi/header.php', $data);
-    $this->load->view('ssi/navigation.php');
-    $this->load->view('ssi/search.php');
-    $this->load->view('ssi/sub_navigation.php', $data);
-    $this->load->view('ssi/top_buttons.php');
-
-    $this->load->view('ssi/contents/user_management/manage_employees.php');
-
-    $this->load->view('ssi/sidebar.php');
-    $this->load->view('ssi/footer.php');
-	*/
-	
 	
     $data = array('title' => 'Manage Employees', 'desc' => 'Manage Employees.', 'subtitle' => 'Manage Employees', 'msg' => 'Manage Employees' , 'pagetitle' => 'Manage Employees', 'allemployees' => $allemployees);   
 	
@@ -272,11 +176,51 @@ class Login extends CI_Controller {
       
   }//load_manage_employees  
   
+  
+  
+  
+  function add_new_employee_view(){
+     
+	 	 if($this->session->userdata('logged_in'))
+        {
+			
+    $alldepartments =  $this->Login_model->getallDepartments();
+    $allaccesslevels = $this->Login_model->getallAccesslevels();
+     
+     
+     
+     
+ $data = array(
+ 'title' => 'Add new Employee', 
+ 'desc' => 'Add new Employee', 
+ 'subtitle' => 'Add new Employee', 
+ 'msg' => 'Add new Employee' , 
+ 'pagetitle' => 'Add new Employee',
+ 'alldepartments' => $alldepartments,
+ 'allaccesslevels' => $allaccesslevels 
+ 
+ );     
+
+		
+		$this->template->setTitles('Add New Employee', 'Add New Employee
+', '', '');
+			
+			$this->template->load('template', 'po/addNewUsers',$data);
+			
+			
+     
+	 }
+		else{
+			
+		redirect(base_url().'index.php/Login/login');	
+			
+		}
+     
+ }  
+ 
+  
     
 }
-
-
-
 
 
 
