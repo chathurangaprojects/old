@@ -82,7 +82,7 @@
                             
                             <ul>
                                 <li>
-                                    <a href="<?php echo site_url();?>">Add Master Items</a>
+                                    <a href="<?php echo site_url();?>/item_master/add_items">Add Master Items</a>
                                 </li>
                                 
                                 <li>
