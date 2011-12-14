@@ -104,21 +104,6 @@
           <td colspan="1" style="padding: 5px 5px 5px 0;"><b>Payment Remarks</b></td>
           <td colspan="7" style="padding: 5px 5px 5px 0;"><!-- <input type="text" id="pay_remark" class="field text full" name="txt_pay_remark" /> -->
             <textarea id="pay_remark" class="field text full" name="txt_pay_remark" rows="2"></textarea></td>
-          <!-- <td style="padding: 5px 5px 5px 0;">
-                            <b>Discount %</b>
-                        </td>
-                        
-                        <td style="padding: 5px 5px 5px 0;">
-                            <input type="text" id="discount" class="field text full" name="txt_discount" />
-                        </td>
-                        
-                        <td style="padding: 5px 5px 5px 0;">
-                            <b>Discount Amount</b>
-                        </td>
-                        
-                        <td style="padding: 5px 5px 5px 0;">
-                            <input type="text" id="discount_amount" class="field text full" name="txt_discount_amount" />
-                        </td> -->
         </tr>
         <tr>
           <td colspan="1" style="padding: 5px 5px 5px 0;"><label class="desc">PO Purpose</label></td>
@@ -130,8 +115,7 @@
         </tr>
         <tr>
           <td colspan="8"><input type="hidden" name="txt_po_no" id="po_no" value="13">
-            <span class="cont tooltip ui-corner-all" title="Click here to add an Item"> <a id="lnk_add_item" class="btn ui-state-default ui-corner-all" href="#"> <span class="ui-icon ui-icon-newwin"></span> Add Item </a> </span>
-            <!-- <button class="ui-state-default ui-corner-all float-left ui-button" type="submit" disabled="disabled">Save</button> --></td>
+            <span class="cont tooltip ui-corner-all" title="Click here to add an Item"> <a id="lnk_add_item" class="btn ui-state-default ui-corner-all" href="#"> <span class="ui-icon ui-icon-newwin"></span> Add Item </a> </span></td>
         </tr>
       </table>
     </fieldset>
@@ -140,42 +124,13 @@
     <div id="dlg_add_item" title="Add Item to Purchase Order">
       <form>
         <table style="width: 100%">
-          <!--                    <tr>
-                        <td style="padding: 5px 5px 5px 0;width: 33%">
-                            <b>Item Name</b>
-                        </td>
-                        
-                        <td style="padding: 5px 5px 5px 0;width: 67%" colspan="3">
-                             <input type="text" id="po_item_name" class="field text full" name="txt_po_item_name" /> 
-                            <input type="text" id="po_item_name" class="field text full" name="txt_po_item_name" onkeypress="get_po_item_name(this.value);" onchange="get_po_item_name(this.value);" onblur="get_po_item_name(this.value);"/>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td style="padding: 5px 5px 5px 0;width: 25%">
-                            <b>Unit</b>
-                        </td>
-                        
-                        <td style="padding: 5px 5px 5px 0;width: 25%">
-                            <input type="text" id="po_item_unit" class="field text full" name="txt_po_item_unit" />
-                        </td>
-                        
-                        <td style="padding: 5px 5px 5px 0;width: 25%">
-                            <b>Unit Price</b>
-                        </td>
-                        
-                        <td style="padding: 5px 5px 5px 0;width: 25%">
-                            <input type="text" id="po_item_unit_price" class="field text full" name="txt_po_item_unit_price" />
-                        </td>
-                    </tr>-->
           <tr>
             <td style="padding: 5px 5px 5px 0;width: 16%"><b>Item Name *</b></td>
             <td style="padding: 5px 5px 5px 0;" colspan="5"><input type="text" id="po_item_name" class="field text full" name="txt_po_item_name" onkeypress="get_po_item_name(this.value);" onchange="get_po_item_name(this.value);" onblur="get_po_item_name(this.value);"/></td>
           </tr>
           <tr>
             <td style="padding: 5px 5px 5px 0;width: 16%"><b>Unit *</b></td>
-            <td style="padding: 5px 5px 5px 0;width: 17%"><!-- <input type="text" id="po_item_unit" class="field text full" name="txt_po_item_unit" /> -->
-              <select id="po_item_unit" class="field select full" name="cmb_po_item_unit">
+            <td style="padding: 5px 5px 5px 0;width: 17%"><select id="po_item_unit" class="field select full" name="cmb_po_item_unit">
                 <option value=""></option>
                 <?php
                                     foreach ($units->result_array() as $row)
@@ -214,34 +169,6 @@
             <td style="padding: 5px 5px 5px 0;" colspan="5"><!-- <input type="text" id="po_desc" class="field text full" name="txt_po_desc" /> -->
               <textarea id="po_desc" class="field text full" name="txt_po_desc" rows="2"></textarea></td>
           </tr>
-          <!-- <tr>
-                        <td style="padding: 5px 5px 5px 0;width: 16%">
-                            <b>Breakable</b>
-                        </td>
-                        
-                        <td style="padding: 5px 5px 5px 0;width: 17%">
-                            <select id="breakable" class="field select full" name="cmb_breakable" >
-                                <option value="1" selected>Yes</option>
-                                <option value="0">No</option>
-                            </select>
-                        </td>
-                        
-                        <td style="padding: 5px 5px 5px 0;width: 16%">
-                            <b>Breakable Unit</b>
-                        </td>
-                        
-                        <td style="padding: 5px 5px 5px 0;width: 17%">
-                            <input type="text" id="po_brk_unit" class="field text full" name="txt_po_brk_unit" />
-                        </td>
-                        
-                        <td style="padding: 5px 5px 5px 0;width: 16%">
-                            <b>Breakable Quantity</b>
-                        </td>
-                        
-                        <td style="padding: 5px 5px 5px 0;width: 18%">
-                            <input type="text" id="po_brk_qty" class="field text full" name="txt_po_brk_qty" />
-                        </td>
-                    </tr> -->
         </table>
         <!--<input type="button" value="Submit" onclick="abc();"/> -->
         <button class="ui-state-default ui-corner-all float-left ui-button" type="button" onclick="add_items_to_po();">Add</button>

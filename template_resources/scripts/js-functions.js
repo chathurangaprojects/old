@@ -440,7 +440,8 @@ $().ready(function() {
 
 $().ready(function() {
         var st = $("#sup_type").val();
-        $("#sup_name").autocomplete(base_url + "/po/purchase_order/load_suppliers/" + st, {
+      //  $("#sup_name").autocomplete(base_url + "/po/purchase_order/load_suppliers/" + st, {
+	 $("#sup_name").autocomplete(base_url + "/PurchaseOrder/selectAllItemSuppliers/" + st, {								  
                 width: 700,
                 matchContains: true,
                 //mustMatch: true,

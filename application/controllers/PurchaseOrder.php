@@ -75,6 +75,37 @@ class PurchaseOrder extends CI_Controller {
 	
 	
 	}
+	
+	
+	
+	
+	public function selectAllItemSuppliers(){
+		
+		if($this->session->userdata('logged_in'))
+            {
+                $this->load->model('po/Create_po_model');
+                
+                $res = $this->Create_po_model->load_suppliers(strtolower($_GET["q"]));
+                
+                if(! empty($res))
+                {
+                    foreach ($res->result_array() as $row)
+                    {
+                        $sup = $row['Supplier_Name'] . ' - ' . $row['Supplier_Code'];
+                        
+						
+                        echo "$sup\n";
+                    }
+                }
+            }
+            else
+            {
+                $this->load->view('login_view');
+            }
+		
+		
+	}
+	
 
 
 }

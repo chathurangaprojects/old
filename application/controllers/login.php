@@ -209,8 +209,76 @@ class Login extends CI_Controller {
 	   	redirect(base_url().'index.php/Login/login');
 
     }
+	
+	
+	
+	 function load_manage_employees(){
+		 
+		 		
+	 if($this->session->userdata('logged_in'))
+        {
+      
+      $this->load->library('pagination');  
+      $offset='';
+        
+        
+ $allemployees = $this->Login_model->get_allemployees();       
+
+            $per_page = 15;
+            $total = count($allemployees);
+        
+           $config['base_url'] = site_url()."/login/load_manage_employees/";
+           $config['total_rows'] = $total;
+           $config['per_page'] = $per_page;
+           $config['first_link'] = 'First';
+           $config['last_link'] = 'Last';
+           $config['next_link'] = 'Next '.'&gt;';
+           $config['prev_link'] = '&lt;'.' Previous';
+                  
+           $this->pagination->initialize($config);
+           
+            $allemployees = $this->Login_model->get_allemployeespaginated($per_page,$offset);   
+    
+  /*  
+    $data = array('title' => 'Manage Employees', 'desc' => 'Manage Employees.', 'subtitle' => 'Manage Employees', 'msg' => 'Manage Employees' , 'pagetitle' => 'Manage Employees', 'allemployees' => $allemployees);     
+
+    $this->load->view('ssi/header.php', $data);
+    $this->load->view('ssi/navigation.php');
+    $this->load->view('ssi/search.php');
+    $this->load->view('ssi/sub_navigation.php', $data);
+    $this->load->view('ssi/top_buttons.php');
+
+    $this->load->view('ssi/contents/user_management/manage_employees.php');
+
+    $this->load->view('ssi/sidebar.php');
+    $this->load->view('ssi/footer.php');
+	*/
+	
+	
+    $data = array('title' => 'Manage Employees', 'desc' => 'Manage Employees.', 'subtitle' => 'Manage Employees', 'msg' => 'Manage Employees' , 'pagetitle' => 'Manage Employees', 'allemployees' => $allemployees);   
+	
+	$this->template->setTitles('Manage Employees', 'Manage Employees
+', '', '');
+			
+			$this->template->load('template', 'po/manageUsers',$data);
+				
+				
+		}
+		else{
+			
+		redirect(base_url().'index.php/Login/login');	
+			
+		}
+      
+  }//load_manage_employees  
+  
     
 }
+
+
+
+
+
 
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
