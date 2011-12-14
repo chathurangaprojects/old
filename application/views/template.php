@@ -82,7 +82,7 @@
                             
                             <ul>
                                 <li>
-                                    <a href="<?php echo site_url();?>/item_master/add_items">Add Master Items</a>
+                                    <a href="<?php echo site_url();?>/item_master/addNewItems">Add Master Items</a>
                                 </li>
                                 
                                 <li>
@@ -227,7 +227,7 @@
 			</div>
 
 			<div id="copyright">
-				Powered by <a href="http://www.admintasia.com/" title="Powerful admin UI template">Admintasia.com</a>
+			Powered by <a href="http://www.admintasia.com/" title="Powerful admin UI template">Admintasia.com</a>
 			</div>
 		</div>
 	</body>

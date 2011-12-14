@@ -437,7 +437,7 @@ $().ready(function() {
                 selectFirst: false
         });
 });
-
+/*
 $().ready(function() {
         var st = $("#sup_type").val();
         $("#sup_name").autocomplete(base_url + "/po/purchase_order/load_suppliers/" + st, {
@@ -451,6 +451,19 @@ $().ready(function() {
                 selectFirst: false
         });
 });
+*/
+
+
+
+$().ready(function() {
+        var st = $("#sup_type").val();
+        $("#sup_name").autocomplete(base_url + "/PurchaseOrder/loadSuppliersBasedOnType/" + st, {
+                width: 700,
+                matchContains: true,
+                selectFirst: false
+        });
+});
+
 
 $().ready(function() {
         $("#po_item_name").autocomplete(base_url + "/item_master/load_item_names", {

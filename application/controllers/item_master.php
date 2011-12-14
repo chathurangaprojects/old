@@ -39,22 +39,28 @@
 		
 		public function addNewItems(){
 			
+		 if($this->session->userdata('logged_in'))
+            {
+				                if($this->Privilege_model->grant_privilege($this->session->userdata('level'), $this->session->userdata('department'), $this->pid))
+                {
 			        $data['title'] = "Add Master Items";
         
                     $data['pagetitle'] = "Add Master Items";
                     
-/*                    $this->load->model('po/Item_category_model');
-                    $data['categories'] =  $this->Item_category_model->load_categories();
-                    
-                    $this->load->model('po/Item_bulk_model');
-                    $data['bulk'] =  $this->Item_bulk_model->load_bulk_type();
-                    
-                    $this->load->model('po/Item_unit_model');
-                    $data['unit'] =  $this->Item_unit_model->load_units();
-					*/
-		
 					$this->template->load('template', 'po/addNewMasterItems',$data);
+				}
+				else{
+					
+															$this->template->setTitles('Access Denied', 'You are not allowed to access this page.', 'You are not allowed to access this page.', 'Please Contact Administrator...');
 			
+			$this->template->load('template', 'errorPage');
+				
+				}
+				
+			}
+			else{
+					redirect(base_url().'index.php/Login/login');
+			}
 			
 		}
 		
@@ -65,7 +71,7 @@
         {
             if($this->session->userdata('logged_in'))
             {
-                if($this->Privilege_model->grant_privilege($this->session->userdata('level'), $this->session->userdata('department'), 150))
+                if($this->Privilege_model->grant_privilege($this->session->userdata('level'), $this->session->userdata('department'), $this->pid))
                 {
                     $this->load->model('po/Item_master_model');
                     

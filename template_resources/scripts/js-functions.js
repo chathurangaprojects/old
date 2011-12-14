@@ -438,10 +438,11 @@ $().ready(function() {
         });
 });
 
+/*
 $().ready(function() {
         var st = $("#sup_type").val();
       //  $("#sup_name").autocomplete(base_url + "/po/purchase_order/load_suppliers/" + st, {
-	 $("#sup_name").autocomplete(base_url + "/PurchaseOrder/selectAllItemSuppliers/" + st, {								  
+	 $("#sup_name").autocomplete(base_url + "/PurchaseOrder/loadSuppliesBasedOnType/" + st, {								  
                 width: 700,
                 matchContains: true,
                 //mustMatch: true,
@@ -452,6 +453,8 @@ $().ready(function() {
                 selectFirst: false
         });
 });
+*/	  
+	  
 
 $().ready(function() {
         $("#po_item_name").autocomplete(base_url + "/item_master/load_item_names", {

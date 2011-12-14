@@ -79,7 +79,9 @@ class PurchaseOrder extends CI_Controller {
 	
 	
 	
-	public function selectAllItemSuppliers(){
+	
+	
+	public function loadSuppliersBasedOnType(){
 		
 		if($this->session->userdata('logged_in'))
             {
@@ -93,18 +95,16 @@ class PurchaseOrder extends CI_Controller {
                     {
                         $sup = $row['Supplier_Name'] . ' - ' . $row['Supplier_Code'];
                         
-						
                         echo "$sup\n";
                     }
                 }
             }
             else
             {
-                $this->load->view('login_view');
+                $this->load->view('login');
             }
 		
-		
-	}
+	}//function
 	
 
 
